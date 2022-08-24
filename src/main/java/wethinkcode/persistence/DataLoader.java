@@ -1,9 +1,6 @@
 package wethinkcode.persistence;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 import java.util.Map;
 
@@ -46,7 +43,27 @@ public class DataLoader {
      * @return true if the data was successfully inserted, otherwise false
      */
     public boolean insertGenres() {
-        return false;
+        boolean result = true;
+        for (Genre genre : genres.values()){
+            result = insertGenre(genre);
+            if (!result) break;
+        }
+        return result;
+    }
+
+    /**
+     * Inserts a genre to the Genres table
+     * @param genre to be inserted
+     * @return true if it succeeds
+     */
+    public boolean insertGenre(Genre genre){
+        return Tables.runSQL(
+                connection,
+                "INSERT INTO Genres " +
+                        "(code, description) " +
+                        "VALUES " +
+                        "('"+genre.getCode()+"', '"+genre.getDescription()+"')"
+        );
     }
 
     /**
@@ -56,9 +73,41 @@ public class DataLoader {
      *
      * @return true if the data was successfully inserted, otherwise false
      */
-    public List<Book> insertBooks() throws SQLException {
-        return null;
+    public List<Book> insertBooks() {
+        boolean result = insertGenres();
+
+        for (Book book : books){
+            if (!result) break;
+            result = insertBook(book);
+        }
+
+        return books;
     }
+
+    /**
+     * Inserts a book to the Books table, and assigns that book an ID
+     * @param book to be inserted
+     * @return true if it succeeds
+     */
+    public boolean insertBook(Book book){
+        Statement results = Tables.runSQLWithResults(
+                connection,
+                "INSERT INTO Books " +
+                        "(title, genre_code) " +
+                        "VALUES " +
+                        "('"+book.getTitle()+"', '"+book.getGenre().getCode()+"');"
+        );
+
+        try {
+            results.getGeneratedKeys().next();
+            book.assignId(results.getGeneratedKeys().getInt(1));
+        } catch (SQLException | NullPointerException e){
+            throw new RuntimeException(e);
+        }
+
+        return true;
+    }
+
 
     /**
      * Get the last id generated from the prepared statement

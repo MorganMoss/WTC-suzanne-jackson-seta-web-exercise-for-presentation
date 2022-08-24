@@ -1,2 +1,2 @@
-SELECT Books.title, Genres.description FROM Books INNER JOIN Genres ON Books.genre_code=Genres.code;
-WHERE Genres.description="History"
+SELECT COUNT(*) FROM Books, Genres
+WHERE Books.genre_code=Genres.code AND Genres.description='History'
