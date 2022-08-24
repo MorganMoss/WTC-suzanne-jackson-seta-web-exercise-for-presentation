@@ -31,7 +31,6 @@ public abstract class AbstractTableValidator implements TableValidator {
         try (final ResultSet rs = metaData.getTables(null, "sqlite_master", tablename, new String[]{"TABLE"})) {
             if (rs.next()) return true;
         }
-        System.out.println("Table doesn't exist");
         return false;
     }
 
@@ -39,7 +38,6 @@ public abstract class AbstractTableValidator implements TableValidator {
         try (final ResultSet rs = metaData.getColumns(null, "sqlite_master", tablename, null)) {
             if (validateColumns(rs)) return true;
         }
-        System.out.println("Columns are wrong");
         return false;
     }
 
@@ -47,7 +45,6 @@ public abstract class AbstractTableValidator implements TableValidator {
         try (final ResultSet rs = metaData.getPrimaryKeys(null, "sqlite_master", tablename)) {
             if (validatePrimaryKey(rs)) return true;
         }
-        System.out.println("Primary Keys are wrong");
         return false;
     }
 
@@ -55,8 +52,6 @@ public abstract class AbstractTableValidator implements TableValidator {
         try (final ResultSet rs = metaData.getImportedKeys(null, "sqlite_master", tablename)) {
             if (validateForeignKey(rs)) return true;
         }
-        System.out.println("Foreign Keys are wrong");
-
         return false;
     }
 }
