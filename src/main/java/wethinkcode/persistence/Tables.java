@@ -5,8 +5,8 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 import java.util.Objects;
 
@@ -80,10 +80,10 @@ public class Tables {
      * @param sql to be executed
      * @return the resultant statement, containing the result set, etc
      */
-    public static Statement runSQLWithResults(Connection connection, String sql){
+    public static PreparedStatement runSQLWithResults(Connection connection, String sql){
         try {
-            Statement statement = connection.createStatement();
-            statement.execute(sql);
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.execute();
             return statement;
         } catch (SQLException e) {
             throw new RuntimeException(e);
