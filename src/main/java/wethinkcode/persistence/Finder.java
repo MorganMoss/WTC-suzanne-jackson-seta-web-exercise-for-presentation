@@ -4,6 +4,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static wethinkcode.persistence.SQLHandler.pullSQLFromFile;
+import static wethinkcode.persistence.SQLHandler.runSQLWithResults;
+
 /**
  * Exercise 3.3
  */
@@ -29,9 +32,9 @@ public class Finder {
      * @throws SQLException the query failed
      */
     public List<Genre> findAllGenres() throws SQLException {
-        Statement results = Tables.runSQLWithResults(
+        Statement results = runSQLWithResults(
                 connection,
-                Tables.pullSQLFromFile("sql/find_all_genres.sql")
+                pullSQLFromFile("sql/find_all_genres.sql")
         );
 
         return pullGenresFromResultSet(results.getResultSet());
@@ -47,7 +50,7 @@ public class Finder {
      * @throws SQLException the query failed
      */
     public List<Genre> findGenresLike(String pattern) throws SQLException {
-        Statement results = Tables.runSQLWithResults(
+        Statement results = runSQLWithResults(
                 connection,
                 "SELECT * FROM Genres WHERE description LIKE '"+pattern+"'"
         );
@@ -64,9 +67,9 @@ public class Finder {
      * @throws SQLException the query failed
      */
     public List<BookGenreView> findBooksAndGenres() throws SQLException {
-        Statement results = Tables.runSQLWithResults(
+        Statement results = runSQLWithResults(
                 connection,
-                Tables.pullSQLFromFile("sql/find_all_books.sql")
+                pullSQLFromFile("sql/find_all_books.sql")
         );
 
         return pullBookGenreViewFromResultSet(results.getResultSet());
@@ -81,12 +84,12 @@ public class Finder {
      * @throws SQLException the query failed
      */
     public int findNumberOfBooksInGenre(String genreCode) throws SQLException {
-        Statement results = Tables.runSQLWithResults(
+        Statement results = runSQLWithResults(
                 connection,
-                "SELECT COUNT(*) FROM Books " +
+                "SELECT COUNT(*) " +
+                "FROM Books " +
                 "WHERE Books.genre_code ='"+genreCode+"'"
         );
-
 
         ResultSet resultSet = results.getResultSet();
         resultSet.next();

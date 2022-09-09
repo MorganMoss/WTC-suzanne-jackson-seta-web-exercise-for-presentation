@@ -6,7 +6,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import wethinkcode.web.WebServer;
 
@@ -73,7 +72,6 @@ public class WebTests {
      * Test for Exercise 4.2
      */
     @Test
-//    @Disabled
     public void registrationForm() throws IOException {
         Document doc = Jsoup.connect("http://localhost:5000/register.html").get();
 
@@ -94,7 +92,6 @@ public class WebTests {
      * Test for Exercise 4.3
      */
     @Test
-//    @Disabled
     public void css() throws IOException {
         Document doc = Jsoup.connect("http://localhost:5000/register.html").get();
         var links = doc.head().getElementsByTag("link");
@@ -112,10 +109,10 @@ public class WebTests {
      * Test for Exercise 4.4
      */
     @Test
-//    @Disabled
     public void formValidation() throws IOException {
         Document doc = Jsoup.connect("http://localhost:5000/register.html").get();
         Element e = doc.getElementById("password");
+        assertNotNull(e);
         assertEquals("8", e.attr("minlength"));
         assertEquals("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]$", e.attr("pattern"));
     }
@@ -134,38 +131,36 @@ public class WebTests {
         var labels = doc.getElementsByTag("label");
         for (Element element : inputs) {
             switch (element.attr("id")) {
-                case "firstname":
+                case "firstname" -> {
                     hasLabel(element, labels);
                     hasName(element);
                     isMandatory(element);
                     isText(element);
                     hasFocus(element);
-                    break;
-                case "lastname":
+                }
+                case "lastname" -> {
                     hasLabel(element, labels);
                     hasName(element);
                     isMandatory(element);
                     isText(element);
-                    break;
-                case "email":
+                }
+                case "email" -> {
                     hasLabel(element, labels);
                     hasName(element);
                     isMandatory(element);
                     isEmail(element);
-                    break;
-                case "password":
-                case "confirmpassword":
+                }
+                case "password", "confirmpassword" -> {
                     hasLabel(element, labels);
                     hasName(element);
                     isMandatory(element);
                     isPassword(element);
-                    break;
-                case "submit":
+                }
+                case "submit" -> {
                     isSubmitButton(element);
                     hasCorrectText(element);
-                    break;
-                default:
-                    fail("Form has unrecognised field: " + element.attr("id"));
+                }
+                default -> fail("Form has unrecognised field: " + element.attr("id"));
             }
         }
     }

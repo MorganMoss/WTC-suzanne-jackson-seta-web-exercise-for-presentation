@@ -4,6 +4,9 @@ import java.sql.*;
 import java.util.List;
 import java.util.Map;
 
+import static wethinkcode.persistence.SQLHandler.runSQL;
+import static wethinkcode.persistence.SQLHandler.runSQLWithResults;
+
 /**
  * Exercise 3.2
  */
@@ -44,10 +47,12 @@ public class DataLoader {
      */
     public boolean insertGenres() {
         boolean result = true;
+
         for (Genre genre : genres.values()){
             result = insertGenre(genre);
             if (!result) break;
         }
+
         return result;
     }
 
@@ -57,12 +62,12 @@ public class DataLoader {
      * @return true if it succeeds
      */
     public boolean insertGenre(Genre genre){
-        return Tables.runSQL(
+        return runSQL(
                 connection,
                 "INSERT INTO Genres " +
-                        "(code, description) " +
-                        "VALUES " +
-                        "('"+genre.getCode()+"', '"+genre.getDescription()+"')"
+                    "(code, description) " +
+                "VALUES " +
+                    "('"+genre.getCode()+"', '"+genre.getDescription()+"')"
         );
     }
 
@@ -90,19 +95,19 @@ public class DataLoader {
      * @return true if it succeeds
      */
     public boolean insertBook(Book book){
-        Statement results = Tables.runSQLWithResults(
+        PreparedStatement results = runSQLWithResults(
                 connection,
                 "INSERT INTO Books " +
-                        "(title, genre_code) " +
-                        "VALUES " +
-                        "('"+book.getTitle()+"', '"+book.getGenre().getCode()+"');"
+                    "(title, genre_code) " +
+                "VALUES " +
+                    "('"+book.getTitle()+"', '"+book.getGenre().getCode()+"');"
         );
 
         try {
-            results.getGeneratedKeys().next();
-            book.assignId(results.getGeneratedKeys().getInt(1));
-        } catch (SQLException | NullPointerException e){
-            throw new RuntimeException(e);
+            book.assignId(getGeneratedId(results));
+        } catch (SQLException e){
+            e.printStackTrace();
+            return false;
         }
 
         return true;

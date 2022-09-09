@@ -1,1 +1,2 @@
-SELECT * FROM Genres
+SELECT *
+FROM Genres

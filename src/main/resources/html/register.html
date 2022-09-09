@@ -1,42 +1,44 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
-   <head>
-      <title>New User Registration</title>
-      <link rel="stylesheet" href="css/normalize.css">
-      <link rel="stylesheet" href="css/main.css">
-   </head>
+<head>
+    <title>New User Registration</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+<title>New User Registration</title>
 
-   <body>
-      <h1>New User Registration</h1>
+    <body>
+        <h1>New User Registration</h1>
+        <form>
+            <label for="firstname">Your first name
+                <input type="text" id="firstname" name="firstname" required autofocus />
+            </label>
+            <br>
 
-      <form>
-         <ul>
-            <li>
-               <label for="firstname" >Your first name</label>
-               <input id="firstname" type="text" name="firstname" required autofocus>
-            </li>
+            <label for="lastname">Your last name
+                <input type="text" id="lastname" name="lastname" required />
+            </label>
+            <br>
 
-            <li>
-               <label for="lastname" >Your last name</label>
-               <input id="lastname" type="text" name="lastname" required>
-            </li>
-            <li>
-               <label for="email" >Your email address</label>
-               <input id="email" type="email" name="email" required>
-            </li>
-            <li>
-               <label for="password" >Your password must be at least 8 characters and must include numbers and uppercase letters.</label>
-               <input id="password"  type="password" name="password" required minlength="8" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]$">
-            </li>
-            <li>
-               <label for="confirmpassword" >Enter your password again to confirm it</label>
-               <input id="confirmpassword" type="password" name="confirmpassword" required></li>
-            <li>
-               <input id="submit" type="submit" value="Register">
-            </li>
-         </>
-      </form>
+            <label for="email">Your email address
+                <input type="email" id="email" name="email" required />
+            </label>
+            <br>
 
-      Read our <a href="./ts_and_cs.html">Terms and Conditions</a>
-   </body>
+            <label for="password">Password
+                <input type="password" id="password" minlength="8" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]$" name="password" required />
+            </label>
+            <br>
+
+            <label for="confirmpassword">Confirm Password
+                <input type="password" id="confirmpassword" name="confirmpassword" required  />
+            </label>
+            <br>
+
+            <button type="submit" class="button">Register</button>
+        </form>
+        <p>
+            Read our <a href="./ts_and_cs.html">Terms and Conditions</a>
+        </p>
+    </body>
 </html>
