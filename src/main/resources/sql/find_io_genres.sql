@@ -1,3 +1,2 @@
-SELECT *
-FROM Genres
-WHERE description LIKE '%io%'
+SELECT * FROM Genres
+WHERE description LIKE '%io%';
