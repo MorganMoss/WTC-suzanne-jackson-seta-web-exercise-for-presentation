@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="webdev-exercise" />
+        <module name="suzanne-jackson-seta-web-exercise-for-presentation" />
       </profile>
     </annotationProcessing>
   </component>
