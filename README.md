@@ -9,18 +9,18 @@ This project uses Java version 17.
 
 ## Installation
 
-Use the git clone <git@gitlab.wethinkco.de:crutgers021/submission-webdev-exercise.git> to install Webdev exercise project using the SSH clone command from the terminal.
+Use the git clone <git@gitlab.wethinkco.de:mmoss021/suzanne-jackson-seta-web-exercise-for-presentation.git> to install Webdev exercise project using the SSH clone command from the terminal.
 
-Use the git clone <https://gitlab.wethinkco.de/crutgers021/submission-webdev-exercise.git> to install Webdev exercise project using the HTTPS clone command from the terminal.
+Use the git clone <https://gitlab.wethinkco.de/mmoss021/suzanne-jackson-seta-web-exercise-for-presentation.git> to install Webdev exercise project using the HTTPS clone command from the terminal.
 
-Use the project link to download the zip file to your computer <https://gitlab.wethinkco.de/crutgers021/submission-webdev-exercise>
+Use the project link to download the zip file to your computer <https://gitlab.wethinkco.de/mmoss021/suzanne-jackson-seta-web-exercise-for-presentation>
 
 ```bash using SSH clone
-git clone git@gitlab.wethinkco.de:crutgers021/submission-webdev-exercise.git
+git clone git@gitlab.wethinkco.de:mmoss021/suzanne-jackson-seta-web-exercise-for-presentation.git
 ```
 
 ```bash using HTTPS clone
-git clone https://gitlab.wethinkco.de/crutgers021/submission-webdev-exercise.git
+git clone https://gitlab.wethinkco.de/mmoss021/suzanne-jackson-seta-web-exercise-for-presentation.git
 ```
 
 
