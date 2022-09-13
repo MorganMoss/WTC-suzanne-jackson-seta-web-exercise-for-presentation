@@ -1,6 +1,6 @@
 /*
 This SQL code retrieves all books with the
-title of a book and the description of its genre.
+title of a book, and the description of its genre.
 */
 
 SELECT Books.title, Genres.description

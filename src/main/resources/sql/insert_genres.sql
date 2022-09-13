@@ -1,6 +1,6 @@
 /*
 This SQL code inserts 3 genres into "Genres" table.
-The short code will be stored under "code" column, while
+The short code will be stored under "code" column, and
 the full description is stored under "description" column.
 */
 

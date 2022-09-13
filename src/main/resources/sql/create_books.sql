@@ -1,9 +1,9 @@
 /*
 Creates a table named "Books" for storing data for books.
 "id" column that uniquely identify each book/row(INTEGER, NOT NULL, UNIQUE, PRIMARY KEY, AUTOINCREMENT)
-"title" column   to store book title/name(NOT NULL)
+"title" column   to store book title/name(NOT NULL).
 "genre_code" column that stores a reference to the genre of the book and
-it references the code column on the Genres table. Hence a FOREIGN KEY and NOT NULL
+it references the code column on the Genres table. Hence a FOREIGN KEY and NOT NULL.
 */
 
 CREATE TABLE "Books" (

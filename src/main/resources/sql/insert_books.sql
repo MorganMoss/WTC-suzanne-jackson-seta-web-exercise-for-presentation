@@ -1,6 +1,6 @@
 /*
 This SQL code inserts 3 books into "Books" table.
-Title or name of the book, will be stored under "title" column, while
+Title/name of the book, will be stored under "title" column, while
 the reference to the genre of the book is stored under "genre_code" column.
 */
 

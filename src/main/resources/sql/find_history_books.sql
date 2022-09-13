@@ -1,5 +1,5 @@
 /*
-This SQL code finds the number of History books.
+This SQL code finds the number of history books.
 */
 
 SELECT COUNT(*)
