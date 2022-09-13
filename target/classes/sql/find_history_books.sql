@@ -1,3 +1,7 @@
+/*
+This SQL code finds the number of History books.
+*/
+
 SELECT COUNT(*)
-FROM Books, Genres
-WHERE Books.genre_code=Genres.code AND Genres.description='History'
+FROM "Genres" g, "Books" b
+WHERE g.code = b.id AND b.genre_code = 'BIO';
