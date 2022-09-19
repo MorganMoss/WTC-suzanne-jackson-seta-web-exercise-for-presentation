@@ -18,6 +18,8 @@ public class WebServer {
         this.javalin = Javalin.create(config -> {
             config.addStaticFiles(PAGES_DIR, Location.CLASSPATH);
         });
+
+        javalin.get("/", ctx -> {ctx.render("html/register.html");});
     }
 
     /**

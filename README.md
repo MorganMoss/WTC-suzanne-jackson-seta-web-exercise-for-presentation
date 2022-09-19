@@ -1,11 +1,8 @@
 # Webdev Exercise
-
 Webdev exercise consolidates concepts during the first semester of the second year. These sections/exercises(rephrase) showcase our understanding of HTTP APIs, Relational database design and SQL, Object Persistence, HTML and CSS.
-
 
 ## Requirements
 This project uses Java version 17.
-
 
 ## Installation
 
@@ -23,7 +20,6 @@ git clone git@gitlab.wethinkco.de:mmoss021/suzanne-jackson-seta-web-exercise-for
 git clone https://gitlab.wethinkco.de/mmoss021/suzanne-jackson-seta-web-exercise-for-presentation.git
 ```
 
-
 ## To Run Program
 
 Use the terminal and navigate to the project directory.
@@ -36,6 +32,22 @@ mvn clean
 mvn test
 ```
 
+```# run Server: WebServer
+mvn package
+mvn compile exec:java -Dexec.mainClass="wethinkcode.web.WebServer"
+```
+
+## Screenshots
+
+mvn clean
+
+![img.png](img.png)
+
+mvn test
+
+![img_1.png](img_1.png)
+![img_2.png](img_2.png)
+![img_3.png](img_3.png)
 
 ## Authors to Acknowledge
 Kagiso Moepya
