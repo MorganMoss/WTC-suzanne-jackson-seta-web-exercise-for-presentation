@@ -34,3 +34,7 @@ grade:
 	pushd "$(SUBMISSION_DIR)"
 	docker run -t -v $(SUBMISSION_DIR):/app $(GRADER_IMAGE):latest '$(GRADE_CMD)'
 	popd
+
+
+run:
+	@mvn compile exec:java -Dexec.mainClass="wethinkcode.web.WebServer"

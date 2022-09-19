@@ -35,6 +35,8 @@ mvn test
 ```# run Server: WebServer
 mvn package
 mvn compile exec:java -Dexec.mainClass="wethinkcode.web.WebServer"
+or 
+make run
 ```
 
 ## Screenshots
